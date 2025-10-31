@@ -1,12 +1,14 @@
 import datetime
 from functools import reduce
 
+
 def log_action(func):
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
         print(f"🗓️ [{datetime.datetime.now().strftime('%H:%M:%S')}] {func.__name__.capitalize()} executed.")
         return result
     return wrapper
+
 
 notes = []
 
@@ -49,6 +51,7 @@ def note_stats():
     print(f"\n📊 Notes: {len(notes)} | Words: {total_words} | Avg: {total_words/len(notes):.1f}")
     countdown(3)
 
+
 def countdown(n):
     if n <= 0: return print("💾 Notes saved successfully!")
     print(f"Saving in {n}..."); countdown(n - 1)
@@ -66,3 +69,4 @@ if __name__ == "__main__":
     note_stats()
     delete_note("Todo")
     show_notes()
+
